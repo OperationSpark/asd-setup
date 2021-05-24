@@ -15,7 +15,7 @@ All of the above should already have been done if you are in the advanced course
 
 ## 1) Install your projects
 
-With your workspace open, find the bash terminal and enter these commands one at a time:
+Open your Gitpod workspace. With your workspace open, find the bash terminal and enter these commands one at a time:
 * `git clone https://github.com/OperationSpark/asd-setup.git`
 * `chmod +x asd-setup/setup.sh`
 * `./asd-setup/setup.sh`
