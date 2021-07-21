@@ -2,6 +2,10 @@
 read -p "Enter Your GitHub Username: "  username
 read -s -p "Enter Your GitHub Password: "  password
 
+if test -e asd-projects; then
+    rm -rf asd-projects
+fi
+
 mkdir asd-projects
 cd asd-projects
 
