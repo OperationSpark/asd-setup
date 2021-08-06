@@ -2,6 +2,8 @@
 read -p "Enter Your GitHub Username: "  username
 read -s -p "Enter Your GitHub Password: "  password
 
+printf "\n"
+
 if test -e asd-projects; then
     rm -rf asd-projects
 fi
@@ -15,13 +17,28 @@ git clone https://${username}:${password}@github.com/operationspark/asd-pong pon
 git clone https://${username}:${password}@github.com/operationspark/asd-image-filtering image-filtering
 git clone https://${username}:${password}@github.com/operationspark/asd-sorting sorting-exercise
 
-cd debugging-exercise
-rm -rf .git* .master
-cd ../walker
-rm -rf .git* .master
-cd ../pong
-rm -rf .git* .master
-cd ../image-filtering
-rm -rf .git* .master
-cd ../sorting-exercise
-rm -rf .git* .master
+if ! test -e debugging-exercise || ! test -e walker || ! test -e pong || ! test -e image-filtering || ! test -e sorting-exercise; then
+    printf "\nFAILURE: Some projects could not be accessed on GitHub. Please run the script again."
+else
+    #debugging-exercise
+    cd debugging-exercise
+    rm -rf .git* .master
+
+    #walker
+    cd ../walker
+    rm -rf .git* .master
+
+    #pong
+    cd ../pong
+    rm -rf .git* .master
+
+    #image-filtering
+    cd ../image-filtering
+    rm -rf .git* .master
+
+    #sorting-exercise
+    cd ../sorting-exercise
+    rm -rf .git* .master
+
+    printf "\nSUCCESS: All projects succesfully installed."
+fi
