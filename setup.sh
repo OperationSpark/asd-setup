@@ -38,5 +38,5 @@ else
     cd ../sorting-exercise
     rm -rf .git* .master
 
-    printf "\nSUCCESS: All projects succesfully installed."
+    printf "\nSUCCESS: All projects succesfully installed.\n"
 fi
