@@ -21,7 +21,6 @@ Open your Gitpod workspace. With your workspace open, find the bash terminal and
 * `./asd-setup/setup.sh`
 * `rm -rf ./asd-setup`
 
-Enter your username and your password.
 
 ## 2) Push your code
 
