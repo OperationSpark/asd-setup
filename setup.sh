@@ -9,17 +9,17 @@ fi
 mkdir asd-projects
 cd asd-projects
 
-git clone https://github.com/operationspark/asd-debugging-exercise debugging-exercise
+git clone https://github.com/operationspark/asd-data-shapes data-shapes
 git clone https://github.com/operationspark/asd-walker walker
 git clone https://github.com/operationspark/asd-pong pong
 git clone https://github.com/operationspark/asd-image-filtering image-filtering
 git clone https://github.com/operationspark/asd-sorting sorting-exercise
 
-if ! test -e debugging-exercise || ! test -e walker || ! test -e pong || ! test -e image-filtering || ! test -e sorting-exercise; then
+if ! test -e data-shapes || ! test -e walker || ! test -e pong || ! test -e image-filtering || ! test -e sorting-exercise; then
     printf "\nFAILURE: Some projects could not be accessed on GitHub. Please run the script again."
 else
-    #debugging-exercise
-    cd debugging-exercise
+    #data-shapes
+    cd data-shapes
     rm -rf .git* .master
 
     #walker
