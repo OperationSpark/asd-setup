@@ -16,7 +16,7 @@ git clone https://github.com/operationspark/asd-image-filtering image-filtering
 git clone https://github.com/operationspark/asd-sorting sorting-exercise
 git clone https://github.com/operationspark/snake-fsd snake
 
-if ! test -e data-shapes || ! test -e debugging-exercise ! test -e walker || ! test -e image-filtering || ! test -e sorting-exercise || ! test -e snake ; then
+if ! test -e data-shapes || ! test -e debugging-exercise || ! test -e walker || ! test -e image-filtering || ! test -e sorting-exercise || ! test -e snake ; then
   printf "\nFAILURE: Some projects could not be accessed on GitHub. Please run the script again."
 else
   #check for existing project-instructions folder
