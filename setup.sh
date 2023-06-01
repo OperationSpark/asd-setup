@@ -10,7 +10,7 @@ mkdir asd-projects
 cd asd-projects
 
 git clone https://github.com/operationspark/asd-data-shapes data-shapes
-https://github.com/OperationSpark/asd-debugging-exercise debugging-exercise
+git clone https://github.com/OperationSpark/asd-debugging-exercise debugging-exercise
 git clone https://github.com/operationspark/asd-walker walker
 git clone https://github.com/operationspark/asd-image-filtering image-filtering
 git clone https://github.com/operationspark/asd-sorting sorting-exercise
