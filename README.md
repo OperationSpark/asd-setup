@@ -23,19 +23,7 @@ Open your Gitpod workspace. With your workspace open, find the bash terminal and
 - `./asd-setup/setup.sh`
 - `rm -rf ./asd-setup`
 
-## 2) Push your code
-
-Down in the bash terminal, enter these commands:
-
-`git add -A`
-
-`git commit -m "adding ASD projects"`
-
-`git push`
-
----
-
-## Bonus - Add Projects to Portfolio
+## 2) Update your Portfolio
 
 Open your `portfolio.html` file. Below the `<h1>Portfolio</h1>` tags, add a `<h2>Fundamentals Projects</h2>` element.
 
@@ -53,4 +41,12 @@ Below the closing `</ul>` tag inside of the `main` element, add the following ht
 </ul>
 ```
 
-Now, run the three git commands again, this time using `"add advanced projects to portfolio"` as the message for the `git commit` command.
+## 3) Push your code
+
+Down in the bash terminal, enter these commands:
+
+`git add -A`
+
+`git commit -m "add ASD projects and update portfolio"`
+
+`git push`
