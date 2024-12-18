@@ -18,7 +18,7 @@ All of the above should already have been done if you are in the advanced course
 
 - Go to [GitHub Codespaces](https://github.com/codespaces). Scroll to the bottom of the webpage and open your existing GitHub codespace for your `.github.io` repository.
 - If you do not have a GitHub codespace, you can create a new one through the green "New Codespace" button at the top right of the page.
-    - If you create a new codespace, you'll need to install the `"Prettier"` and `"Live Server"` extensions. [Find documentation for adding extensions here](https://docs.github.com/en/codespaces/getting-started/quickstart#personalizing-with-an-extension).
+  - If you create a new codespace, you'll need to install the `"Prettier"` and `"Live Server"` extensions. [Find documentation for adding extensions here](https://docs.github.com/en/codespaces/getting-started/quickstart#personalizing-with-an-extension).
 
 <br><br><br>
 
@@ -98,8 +98,6 @@ Below the closing `</ul>` tag inside of the `main` element, add the following ht
     <li><a href="asd-projects/sorting-exercise">Sorting Exercise: An exercise on sorting algorithms</a></li>
 </ul>
 ```
-
-Now, run the three git commands again, this time using `"add advanced projects to portfolio"` as the message for the `git commit` command.
 
 <br><br><br>
 
