@@ -28,13 +28,15 @@ All of the above should already have been done if you are in the advanced course
 
 Enter the following commands into your terminal one at a time to create a script that will run your
 
-- `mkdir scripts`
-- `touch scripts/asd-install.sh`
-- `code scripts/asd-install.sh`
+```bash copy
+mkdir scripts
+touch scripts/asd-install.sh
+code scripts/asd-install.sh
+```
 
 Next, copy and paste the following code into your `asd-install.sh` file:
 
-```bash
+```bash copy
 # clone student-owned asd-projects repo
 git clone https://github.com/$1/asd
 
