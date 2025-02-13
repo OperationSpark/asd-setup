@@ -14,53 +14,7 @@ All of the above should already have been done if you are in the advanced course
 
 <br><br><br>
 
-## Step 1: Open Your GitHub Codespace
-
-- Go to [GitHub Codespaces](https://github.com/codespaces). Scroll to the bottom of the webpage and open your existing GitHub codespace for your `.github.io` repository.
-- If you do not have a GitHub codespace, you can create a new one through the green "New Codespace" button at the top right of the page.
-  - If you create a new codespace, you'll need to install the `"Prettier"` and `"Live Server"` extensions. [Find documentation for adding extensions here](https://docs.github.com/en/codespaces/getting-started/quickstart#personalizing-with-an-extension).
-
-<br><br><br>
-
-## Step 2: Add Script to Install New Projects
-
-**NOTE**: If your repo already contains a `scripts` folder with a `asd-install.sh` file inside of it, you can skip ahead to [Step 3](#step-3-create-new-repository)
-
-Enter the following commands into your terminal one at a time to create a script that will run your
-
-```bash copy
-mkdir scripts
-touch scripts/asd-install.sh
-code scripts/asd-install.sh
-```
-
-Next, copy and paste the following code into your `asd-install.sh` file:
-
-```bash copy
-# clone student-owned asd-projects repo
-git clone https://github.com/$1/asd
-
-# remove git references from cloned repo
-cd asd
-rm -rf .git*
-cd ..
-
-# create subfolders in project-instructions folder
-mv project-instructions fsd
-mkdir project-instructions
-mv fsd project-instructions/
-mv asd/project-instructions project-instructions/asd/
-
-# move asd projects to root
-mv asd/asd-projects asd-projects/
-
-# remove cloned asd repo once all projects are installed
-rm -rf asd
-```
-
-<br><br><br>
-
-## Step 3: Create New Repository
+## Step 1: Create New Repository
 
 - Right click [this link](https://github.com/new?template_name=asd-projects-template&template_owner=OperationSpark) and select "Open Link in New Tab".
 - Ensure that `"OperationSpark/asd-projects-template"` is the selected template in the "Repository template" dropdown.
@@ -72,11 +26,31 @@ rm -rf asd
 
 <br><br><br>
 
+## Step 2: Open Your GitHub Codespace
+
+- Go to [GitHub Codespaces](https://github.com/codespaces). Scroll to the bottom of the webpage and open your existing GitHub codespace for your `.github.io` repository.
+- If you do not have a GitHub codespace, you can create a new one through the green "New Codespace" button at the top right of the page.
+  - If you create a new codespace, you'll need to install the `"Prettier"` and `"Live Server"` extensions. [Find documentation for adding extensions here](https://docs.github.com/en/codespaces/getting-started/quickstart#personalizing-with-an-extension).
+
+<br><br><br>
+
+## Step 3: Add Script to Install New Projects
+
+**NOTE**: If your repo already contains a `scripts` folder with a `asd-install.sh` file inside of it, you can skip ahead to [Step 3](#step-3-create-new-repository)
+
+Enter the following code into your terminal and press enter.
+
+```bash copy
+mkdir scripts
+printf "# clone student-owned asd-projects repo\ngit clone https://github.com/\$1/asd\n\n# remove git references from cloned repo\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nmv project-instructions fsd\nmkdir project-instructions\nmv fsd project-instructions/\nmv asd/project-instructions project-instructions/asd/\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd" >> scripts/asd-install.sh
+chmod +x scripts/asd-install.sh
+```
+
+<br><br><br>
+
 ## Step 4: Install ASD Projects into Codespace
 
-Back in your GitHub codespace, enter the following commandsDown in the bash terminal, enter these commands:
-
-- `chmod +x scripts/asd-install.sh`
+Back in your GitHub codespace, type out the following command into the terminal, **making sure to modify it to include your GitHub username**, and then press enter.
 
 - `bash scripts/asd-install.sh YOUR_GITHUB_USERNAME`
   - For this command, replace the text `YOUR_GITHUB_USERNAME` with your actual GitHub username. Double check that your spelling is correct before running this command!
@@ -100,6 +74,8 @@ Below the closing `</ul>` tag inside of the `main` element, add the following ht
     <li><a href="asd-projects/sorting-exercise">Sorting Exercise: An exercise on sorting algorithms</a></li>
 </ul>
 ```
+
+Open your home page with Live Server, navigate to your portfolio, and ensure that the new links work before moving on.
 
 <br><br><br>
 
