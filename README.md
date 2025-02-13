@@ -75,6 +75,8 @@ Below the closing `</ul>` tag inside of the `main` element, add the following ht
 </ul>
 ```
 
+Open your home page with Live Server, navigate to your portfolio, and ensure that the new links work before moving on.
+
 <br><br><br>
 
 ## Step 6 - Push Up Your Code
