@@ -38,7 +38,7 @@ All of the above should already have been done if you are in the advanced course
 
 **NOTE**: If your repo already contains a `scripts` folder with a `asd-install.sh` file inside of it, skip ahead to [Step 4](#step-4-install-asd-projects-into-codespace)
 
-Copy and paste each of the following commands into your terminal, pressing enter after pasting each command to run it.
+Copy and paste each of the following commands into your codespace's terminal, pressing enter after pasting each command to run it.
 
 ```bash copy
 mkdir scripts
