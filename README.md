@@ -50,7 +50,13 @@ chmod +x scripts/asd-install.sh
 
 ## Step 4: Install ASD Projects into Codespace
 
-Back in your GitHub codespace, type out the following command into the terminal, **making sure to modify it to include your GitHub username**, and then press enter.
+Copy and paste the following command into your terminal, then press enter.
+
+```bash copy
+chmod +x scripts/asd-install.sh
+```
+
+Type out the following command into the terminal, **making sure to modify it to include your GitHub username**, and then press enter.
 
 - `bash scripts/asd-install.sh YOUR_GITHUB_USERNAME`
   - For this command, replace the text `YOUR_GITHUB_USERNAME` with your actual GitHub username. Double check that your spelling is correct before running this command!
