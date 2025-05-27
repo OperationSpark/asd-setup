@@ -36,21 +36,29 @@ All of the above should already have been done if you are in the advanced course
 
 ## Step 3: Add Script to Install New Projects
 
-**NOTE**: If your repo already contains a `scripts` folder with a `asd-install.sh` file inside of it, you can skip ahead to [Step 3](#step-3-create-new-repository)
+**NOTE**: If your repo already contains a `scripts` folder with a `asd-install.sh` file inside of it, skip ahead to [Step 4](#step-4-install-asd-projects-into-codespace)
 
-Enter the following code into your terminal and press enter.
+Copy and paste each of the following commands into your codespace's terminal, pressing enter after pasting each command to run it.
 
 ```bash copy
 mkdir scripts
-printf "# clone student-owned asd-projects repo\ngit clone https://github.com/\$1/asd\n\n# remove git references from cloned repo\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nmv project-instructions fsd\nmkdir project-instructions\nmv fsd project-instructions/\nmv asd/project-instructions project-instructions/asd/\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd" >> scripts/asd-install.sh
-chmod +x scripts/asd-install.sh
+```
+
+```bash copy
+printf "# this script most recently updated in feb 2025\n\n# clone student-owned asd-projects repo\ngit clone https://github.com/\$1/asd\n\n# remove git references from cloned repo\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nmv project-instructions fsd\nmkdir project-instructions\nmv fsd project-instructions/\nmv asd/project-instructions project-instructions/asd/\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd" >> scripts/asd-install.sh
 ```
 
 <br><br><br>
 
 ## Step 4: Install ASD Projects into Codespace
 
-Back in your GitHub codespace, type out the following command into the terminal, **making sure to modify it to include your GitHub username**, and then press enter.
+Copy and paste the following command into your terminal, then press enter.
+
+```bash copy
+chmod +x scripts/asd-install.sh
+```
+
+Type out the following command into the terminal, **making sure to modify it to include your GitHub username**, and then press enter.
 
 - `bash scripts/asd-install.sh YOUR_GITHUB_USERNAME`
   - For this command, replace the text `YOUR_GITHUB_USERNAME` with your actual GitHub username. Double check that your spelling is correct before running this command!
@@ -83,6 +91,6 @@ Open your home page with Live Server, navigate to your portfolio, and ensure tha
 
 Run the following commands in your terminal to push up your code to GitHub.
 
-- `git add -A`
+- `git add .`
 - `git commit -m "add ASD projects"`
 - `git push`
