@@ -13,7 +13,7 @@ git clone https://github.com/operationspark/asd-data-shapes data-shapes
 git clone https://github.com/OperationSpark/asd-debugging-exercise debugging-exercise
 git clone https://github.com/operationspark/asd-walker walker
 git clone https://github.com/operationspark/asd-image-filtering image-filtering
-git clone https://github.com/operationspark/asd-sorting sorting-exercise
+git clone https://github.com/operationspark/asd-sorting sorting
 git clone https://github.com/operationspark/snake-fsd snake
 
 if ! test -e data-shapes || ! test -e debugging-exercise || ! test -e walker || ! test -e image-filtering || ! test -e sorting-exercise || ! test -e snake ; then
