@@ -45,7 +45,7 @@ mkdir scripts
 ```
 
 ```bash copy
-printf "# this script most recently updated in feb 2025\n\n# clone student-owned asd-projects repo\ngit clone https://github.com/\$1/asd\n\n# remove git references from cloned repo\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nmv project-instructions fsd\nmkdir project-instructions\nmv fsd project-instructions/\nmv asd/project-instructions project-instructions/asd/\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd" >> scripts/asd-install.sh
+printf "# this script most recently updated/maintained in may 2025\n\n# clone student-owned asd-projects repo\ngit clone https://github.com/\$1/asd\n\n# remove git references from cloned repo\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nmv project-instructions fsd\nmkdir project-instructions\nmv fsd project-instructions/\nmv asd/project-instructions project-instructions/asd/\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd" >> scripts/asd-install.sh
 ```
 
 <br><br><br>
@@ -79,7 +79,7 @@ Below the closing `</ul>` tag inside of the `main` element, add the following ht
     <li><a href="asd-projects/snake">Snake: Feed the snake or be fed upon</a></li>
     <li><a href="asd-projects/walker">Walker: Practice user input by animating walking boxes</a></li>
     <li><a href="asd-projects/image-filtering">Image Filtering: Filter images using loops</a></li>
-    <li><a href="asd-projects/sorting-exercise">Sorting Exercise: An exercise on sorting algorithms</a></li>
+    <li><a href="asd-projects/sorting">Sorting Exercise: An exercise on sorting algorithms</a></li>
 </ul>
 ```
 

@@ -1,3 +1,7 @@
+#! running this script in codespaces will likely not work due to how codespaces handles cloning repos
+#! codespaces won't automatically create a github token for the user with access to other repos they have access to outside of the one they are creating the codesapce for
+#! attempting to clone the opspark project repos is ultimately what causes an error here
+echo "IMPORTANT!! if you are running this script in GitHub codespaces, it will likely fail due to GitHub permission reason(s). This is expected and the install instructions have been updated to reflect that"
 #!/bin/bash
 
 printf "\n"
@@ -13,7 +17,7 @@ git clone https://github.com/operationspark/asd-data-shapes data-shapes
 git clone https://github.com/OperationSpark/asd-debugging-exercise debugging-exercise
 git clone https://github.com/operationspark/asd-walker walker
 git clone https://github.com/operationspark/asd-image-filtering image-filtering
-git clone https://github.com/operationspark/asd-sorting sorting-exercise
+git clone https://github.com/operationspark/asd-sorting sorting
 git clone https://github.com/operationspark/snake-fsd snake
 
 if ! test -e data-shapes || ! test -e debugging-exercise || ! test -e walker || ! test -e image-filtering || ! test -e sorting-exercise || ! test -e snake ; then
