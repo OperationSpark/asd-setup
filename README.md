@@ -45,7 +45,7 @@ mkdir scripts
 ```
 
 ```bash copy
-printf "# this script most recently updated/maintained in may 2025\n\n# clone student-owned asd-projects repo\ngit clone https://github.com/\$1/asd\n\n# remove git references from cloned repo\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nmv project-instructions fsd\nmkdir project-instructions\nmv fsd project-instructions/\nmv asd/project-instructions project-instructions/asd/\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd" >> scripts/asd-install.sh
+printf "# this script most recently updated/maintained in may 2025\n\n# clone student-owned asd-projects repo\ngit clone https://github.com/\$1/asd\n\n# remove git references from cloned repo if the asd folder exists\nif [ -d \"asd\" ]; then\n  echo \"Preparing asd projects and instructions...\"\nelse\n  echo \"asd folder does not exist. Cancelling operation.\"\n  echo \"Please check with your instructor to help troubleshoot.\"\n  exit 1\nfi\n\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nmv project-instructions fsd\nmkdir project-instructions\nmv fsd project-instructions/\nmv asd/project-instructions project-instructions/asd/\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd" > scripts/asd-install.sh
 ```
 
 <br><br><br>
