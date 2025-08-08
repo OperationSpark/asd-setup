@@ -35,7 +35,7 @@ rm -rf .git*
 cd ..
 
 # create subfolders in project-instructions folder
-if [ ! -d "project-instructions/asd-subfolder" ]; then
+if [ ! -d "project-instructions/asd" ]; then
   mv project-instructions fsd
   mkdir project-instructions
   mv fsd project-instructions/
