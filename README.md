@@ -14,7 +14,7 @@ All of the above should already have been done if you are in the advanced course
 
 <br><br><br>
 
-## Step 1: Create New Repository
+## Step 1: Create a New Repository
 
 - Right click [this link](https://github.com/new?template_name=asd-projects-template&template_owner=OperationSpark) and select "Open Link in New Tab".
 - Ensure that `"OperationSpark/asd-projects-template"` is the selected template in the "Repository template" dropdown.
@@ -30,6 +30,7 @@ All of the above should already have been done if you are in the advanced course
 
 - Go to [GitHub Codespaces](https://github.com/codespaces). Scroll to the bottom of the webpage and open your existing GitHub codespace for your `.github.io` repository.
 - If you do not have a GitHub codespace, you can create a new one through the green "New Codespace" button at the top right of the page.
+  - Select your `<username>.github.io` repository that you worked on in the FSD course as the target repo to create the codespace from.
   - If you create a new codespace, you'll need to install the `"Prettier"` and `"Live Server"` extensions. [Find documentation for adding extensions here](https://docs.github.com/en/codespaces/getting-started/quickstart#personalizing-with-an-extension).
 
 <br><br><br>
@@ -45,7 +46,7 @@ mkdir scripts
 ```
 
 ```bash copy
-printf "# this script most recently updated/maintained in may 2025\n\n# clone student-owned asd-projects repo\ngit clone https://github.com/\$1/asd\n\n# remove git references from cloned repo if the asd folder exists\nif [ -d \"asd\" ]; then\n  echo \"Preparing asd projects and instructions...\"\nelse\n  echo \"asd folder does not exist. Cancelling operation.\"\n  echo \"Please check with your instructor to help troubleshoot.\"\n  exit 1\nfi\n\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nmv project-instructions fsd\nmkdir project-instructions\nmv fsd project-instructions/\nmv asd/project-instructions project-instructions/asd/\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd" > scripts/asd-install.sh
+printf '# this script most recently updated/maintained in august 2025\n# extract username from current working directory (expects format: username.github.io)\ncurrent_dir=$(basename "$PWD")\n# extract username from current working directory (expects format: username.github.io)\nif [[ "$current_dir" =~ ^([^.]+)\.github\.io$ ]]; then\n  username="${BASH_REMATCH[1]}"\n  echo $username\nelse\n  echo "Error: Current directory name must be in the format username.github.io."\n  echo "Please check which directory you are in. Check with your instructor if you need help. Cancelling operation."\n  exit 1\nfi\n\n# check if asd-projects folder already exists\nif [ -d "asd-projects" ]; then\n  echo "Error: asd-projects directory already exists."\n  echo "You may have already run this script. Check with your instructor before proceeding. Cancelling operation."\n  exit 1\nfi\n\n# clone student-owned asd-projects repo\ngit clone https://github.com/$username/asd\n\n# remove git references from cloned repo if the asd folder exists\nif [ -d "asd" ]; then\n  echo "Preparing asd projects and instructions..."\nelse\n  echo "Error: asd folder does not exist."\n  echo "There may be an issue with your repository. Please check with your instructor to help troubleshoot. Cancelling operation."\n  exit 1\nfi\n\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nif [ ! -d "project-instructions/asd" ]; then\n  mv project-instructions fsd\n  mkdir project-instructions\n  mv fsd project-instructions/\n  mv asd/project-instructions project-instructions/asd/\nelse\n  echo "asd subfolder already exists in project-instructions. Existing asd instructions will be replaced."\n  mv asd/project-instructions project-instructions/asd/\nfi\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd\n' > scripts/asd-install.sh
 ```
 
 <br><br><br>
@@ -58,10 +59,9 @@ Copy and paste the following command into your terminal, then press enter.
 chmod +x scripts/asd-install.sh
 ```
 
-Type out the following command into the terminal, **making sure to modify it to include your GitHub username**, and then press enter.
-
-- `bash scripts/asd-install.sh YOUR_GITHUB_USERNAME`
-  - For this command, replace the text `YOUR_GITHUB_USERNAME` with your actual GitHub username. Double check that your spelling is correct before running this command!
+```bash copy
+bash scripts/asd-install.sh
+```
 
 <br><br><br>
 
@@ -80,6 +80,10 @@ Below the closing `</ul>` tag inside of the `main` element, add the following ht
     <li><a href="asd-projects/walker">Walker: Practice user input by animating walking boxes</a></li>
     <li><a href="asd-projects/image-filtering">Image Filtering: Filter images using loops</a></li>
     <li><a href="asd-projects/sorting">Sorting Exercise: An exercise on sorting algorithms</a></li>
+</ul>
+<h2>Mini Projects</h2>
+<ul id ="portfolio">
+    <li><a href="asd-projects/dice-app"> Dice App: A simple, interactive dice app built using jQuery</a></li>
 </ul>
 ```
 
