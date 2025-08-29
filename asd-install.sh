@@ -1,7 +1,6 @@
 #!/bin/bash
-# ASD Projects Installer - Zero Prerequisites Version
-# Usage: curl -sSL https://raw.githubusercontent.com/OperationSpark/asd-setup/main/install.sh | bash
-# No repository creation required - clones directly from template!
+# ASD Projects Installer - Pre-bundled Version
+# Usage: curl -sSL https://raw.githubusercontent.com/OperationSpark/asd-setup/main/asd-install.sh | bash
 
 set -e  # Exit on any error
 
@@ -13,7 +12,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-TEMPLATE_REPO="OperationSpark/asd-projects-template"
+SETUP_REPO="OperationSpark/asd-setup"
 TEMP_DIR="temp-asd-$$"
 
 # Logging functions
@@ -24,9 +23,9 @@ log_error() { echo -e "${RED}❌ $1${NC}"; }
 
 # Main installation function
 install_asd_projects() {
-    log_info "ASD Projects Installer - Zero Prerequisites Version"
+    log_info "ASD Projects Installer - Pre-bundled Version"
     echo "=================================================="
-    log_info "This installer clones directly from the template - no repository creation needed!"
+    log_info "This installer downloads pre-bundled template files - no authentication needed!"
     echo
     
     # Step 1: Validate environment
@@ -39,8 +38,8 @@ install_asd_projects() {
     # Step 3: Check for existing installation
     check_existing_installation
     
-    # Step 4: Clone directly from template
-    clone_template_projects
+    # Step 4: Download pre-bundled template files
+    download_template_files
     
     # Step 5: Update portfolio
     update_portfolio
@@ -76,6 +75,12 @@ validate_environment() {
         exit 1
     fi
     
+    # Check if curl is available
+    if ! command -v curl &> /dev/null; then
+        log_error "curl is not installed or not in PATH"
+        exit 1
+    fi
+    
     log_success "Environment validation passed"
 }
 
@@ -108,32 +113,63 @@ check_existing_installation() {
     fi
 }
 
-# Clone projects directly from template (no user repo needed)
-clone_template_projects() {
-    log_info "Cloning ASD projects directly from template..."
-    log_info "Template: $TEMPLATE_REPO"
+# Download pre-bundled template files
+download_template_files() {
+    log_info "Downloading pre-bundled ASD template files..."
+    log_info "Source: github.com/$SETUP_REPO/template-files/"
     
-    # Clone the template repository
-    if ! git clone --depth 1 "https://github.com/$TEMPLATE_REPO" "$TEMP_DIR" 2>/dev/null; then
-        log_error "Failed to clone template repository: https://github.com/$TEMPLATE_REPO"
-        log_error "This might be a temporary network issue. Please try again in a moment."
+    # Create temporary directory
+    mkdir -p "$TEMP_DIR"
+    
+    # Download the template files as a zip
+    log_info "Downloading template archive..."
+    if ! curl -L -s "https://github.com/$SETUP_REPO/archive/refs/heads/main.zip" -o "$TEMP_DIR/template.zip"; then
+        log_error "Failed to download template files from: https://github.com/$SETUP_REPO"
+        log_error "This might be a network issue. Please try again in a moment."
+        cleanup_temp_files
+        exit 1
+    fi
+    
+    # Extract the zip file
+    log_info "Extracting template files..."
+    if ! command -v unzip &> /dev/null; then
+        log_error "unzip is not installed. Installing template files requires unzip."
+        cleanup_temp_files
+        exit 1
+    fi
+    
+    cd "$TEMP_DIR"
+    if ! unzip -q template.zip; then
+        log_error "Failed to extract template files"
+        cd ..
+        cleanup_temp_files
+        exit 1
+    fi
+    cd ..
+    
+    # Find the extracted directory (should be asd-setup-main or similar)
+    local extracted_dir=$(find "$TEMP_DIR" -maxdepth 1 -type d -name "*asd-setup*" | head -n 1)
+    if [ -z "$extracted_dir" ]; then
+        log_error "Could not find extracted template directory"
+        cleanup_temp_files
         exit 1
     fi
     
     log_info "Setting up project structure..."
     
     # Move ASD projects to root
-    if [ -d "$TEMP_DIR/asd-projects" ]; then
-        mv "$TEMP_DIR/asd-projects" ./
-        log_success "ASD projects installed from template"
+    if [ -d "$extracted_dir/template-files/asd-projects" ]; then
+        mv "$extracted_dir/template-files/asd-projects" ./
+        log_success "ASD projects installed from pre-bundled template"
     else
-        log_error "asd-projects directory not found in template repository"
+        log_error "asd-projects directory not found in template files"
+        log_error "Expected location: $extracted_dir/template-files/asd-projects"
         cleanup_temp_files
         exit 1
     fi
     
     # Setup project instructions
-    setup_project_instructions
+    setup_project_instructions "$extracted_dir"
     
     # Cleanup
     cleanup_temp_files
@@ -141,6 +177,8 @@ clone_template_projects() {
 
 # Setup project instructions directory structure
 setup_project_instructions() {
+    local extracted_dir="$1"
+    
     log_info "Setting up project instructions..."
     
     # Create project-instructions structure if needed
@@ -161,8 +199,8 @@ setup_project_instructions() {
     fi
     
     # Move ASD instructions
-    if [ -d "$TEMP_DIR/project-instructions" ]; then
-        cp -r "$TEMP_DIR/project-instructions"/* project-instructions/asd/ 2>/dev/null || true
+    if [ -d "$extracted_dir/template-files/project-instructions" ]; then
+        cp -r "$extracted_dir/template-files/project-instructions"/* project-instructions/asd/ 2>/dev/null || true
         log_success "Project instructions organized"
     fi
 }
@@ -298,10 +336,10 @@ commit_changes() {
     # Commit with descriptive message
     if git commit -m "feat: add ASD projects and update portfolio
 
-- Added ASD project files to asd-projects/ (cloned from template)
+- Added ASD project files to asd-projects/ (from pre-bundled template)
 - Organized project instructions in project-instructions/asd/
 - Updated portfolio.html with Advanced Projects and Mini Projects sections
-- Installed via zero-prerequisites ASD installer script"; then
+- Installed via streamlined ASD installer script"; then
         log_success "Changes committed successfully"
     else
         log_error "Failed to commit changes"
@@ -330,7 +368,7 @@ show_completion_message() {
     log_info "  ✓ Updated portfolio.html with new project links"
     log_info "  ✓ Changes committed and pushed to GitHub"
     echo
-    log_info "📁 Projects installed from template (no repository creation needed):"
+    log_info "📁 Projects installed from pre-bundled template:"
     log_info "  • Data Shapes"
     log_info "  • Debugging Exercise" 
     log_info "  • Snake"

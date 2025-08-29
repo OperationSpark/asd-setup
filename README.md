@@ -16,7 +16,7 @@ Ready to level up from the fundamentals? Let's get your Advanced Software Develo
 In your codespace terminal, copy and paste this command:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/OperationSpark/asd-setup/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/OperationSpark/asd-setup/main/asd-install.sh | bash
 ```
 
 Press Enter and wait for the installation to complete. You'll see a success message when it's done!
