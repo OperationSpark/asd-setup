@@ -147,7 +147,7 @@ download_template_files() {
     fi
     cd ..
     
-    # Find the extracted directory (should be asd-setup-main or similar)
+    # Find the extracted directory (will be asd-setup-setup-revamp or asd-setup-main)
     local extracted_dir=$(find "$TEMP_DIR" -maxdepth 1 -type d -name "*asd-setup*" | head -n 1)
     if [ -z "$extracted_dir" ]; then
         log_error "Could not find extracted template directory"
