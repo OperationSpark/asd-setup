@@ -1,100 +1,71 @@
-# Set up your Github Codespace
+# ASD Projects Setup
 
-Below, you will find instructions for adding the ASD course's projects into your repository. Read all instructions carefully before moving on. If you get stuck, encounter an issue, or simply need help, reach out to your instructor.
+## Get Started with Advanced Projects
 
-## Step 0: Pre-requisites:
+Ready to level up from the fundamentals? Let's get your Advanced Software Development (ASD) projects installed!
 
-Before continuing on to the next steps, make sure that you have done the following:
+---
 
-- Created an account on Greenlight
-- Created an account on GitHub
-- Joined the OperationSpark GitHub Team
+## Setup Instructions
 
-All of the above should already have been done if you are in the advanced course, but if they are not, see the <a href="https://github.com/OperationSpark/fsd-setup">fsd-setup instructions</a> for how to do so.
+### Step 1: Open Your Codespace
+1. Go to [GitHub Codespaces](https://github.com/codespaces)
+2. Open your existing `username.github.io` codespace (the one you used for FSD projects)
 
-<br><br><br>
+### Step 2: Install ASD Projects
+In your codespace terminal, copy and paste this command:
 
-## Step 1: Create a New Repository
-
-- Right click [this link](https://github.com/new?template_name=asd-projects-template&template_owner=OperationSpark) and select "Open Link in New Tab".
-- Ensure that `"OperationSpark/asd-projects-template"` is the selected template in the "Repository template" dropdown.
-- Click the "Choose an owner" dropdown and select your username
-- Name your new repository `asd` in the "Repository name" input
-  - **Important**: this name should be all lowercase, and without any spaces or symbols
-- Confirm with your teacher that all setup steps are complete before clicking "Create repository" at the bottom of the page
-- The repository will take 10-15 seconds to load (since code is being copied from another spot). After the repsitory is set up, you can close the tab that contains your newly created repository and switch back to your codespace
-
-<br><br><br>
-
-## Step 2: Open Your GitHub Codespace
-
-- Go to [GitHub Codespaces](https://github.com/codespaces). Scroll to the bottom of the webpage and open your existing GitHub codespace for your `.github.io` repository.
-- If you do not have a GitHub codespace, you can create a new one through the green "New Codespace" button at the top right of the page.
-  - Select your `<username>.github.io` repository that you worked on in the FSD course as the target repo to create the codespace from.
-  - If you create a new codespace, you'll need to install the `"Prettier"` and `"Live Server"` extensions. [Find documentation for adding extensions here](https://docs.github.com/en/codespaces/getting-started/quickstart#personalizing-with-an-extension).
-
-<br><br><br>
-
-## Step 3: Add Script to Install New Projects
-
-**NOTE**: If your repo already contains a `scripts` folder with a `asd-install.sh` file inside of it, skip ahead to [Step 4](#step-4-install-asd-projects-into-codespace)
-
-Copy and paste each of the following commands into your codespace's terminal, pressing enter after pasting each command to run it.
-
-```bash copy
-mkdir scripts
+```bash
+curl -sSL https://raw.githubusercontent.com/OperationSpark/asd-setup/main/install.sh | bash
 ```
 
-```bash copy
-printf '# this script most recently updated/maintained in august 2025\n# extract username from current working directory (expects format: username.github.io)\ncurrent_dir=$(basename "$PWD")\n# extract username from current working directory (expects format: username.github.io)\nif [[ "$current_dir" =~ ^([^.]+)\.github\.io$ ]]; then\n  username="${BASH_REMATCH[1]}"\n  echo $username\nelse\n  echo "Error: Current directory name must be in the format username.github.io."\n  echo "Please check which directory you are in. Check with your instructor if you need help. Cancelling operation."\n  exit 1\nfi\n\n# check if asd-projects folder already exists\nif [ -d "asd-projects" ]; then\n  echo "Error: asd-projects directory already exists."\n  echo "You may have already run this script. Check with your instructor before proceeding. Cancelling operation."\n  exit 1\nfi\n\n# clone student-owned asd-projects repo\ngit clone https://github.com/$username/asd\n\n# remove git references from cloned repo if the asd folder exists\nif [ -d "asd" ]; then\n  echo "Preparing asd projects and instructions..."\nelse\n  echo "Error: asd folder does not exist."\n  echo "There may be an issue with your repository. Please check with your instructor to help troubleshoot. Cancelling operation."\n  exit 1\nfi\n\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nif [ ! -d "project-instructions/asd" ]; then\n  mv project-instructions fsd\n  mkdir project-instructions\n  mv fsd project-instructions/\n  mv asd/project-instructions project-instructions/asd/\nelse\n  echo "asd subfolder already exists in project-instructions. Existing asd instructions will be replaced."\n  mv asd/project-instructions project-instructions/asd/\nfi\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd\n' > scripts/asd-install.sh
-```
+Press Enter and wait for the installation to complete. You'll see a success message when it's done!
 
-<br><br><br>
+---
 
-## Step 4: Install ASD Projects into Codespace
+## What You'll Get
 
-Copy and paste the following command into your terminal, then press enter.
+### 🎮 **6 Advanced Projects**
+- **Data Shapes** - Master iteration patterns
+- **Debugging Exercise** - Sharpen your debugging skills
+- **Snake** - Build the classic snake game
+- **Walker** - Animate characters with user input
+- **Image Filtering** - Transform images with code
+- **Sorting** - Learn algorithm fundamentals
 
-```bash copy
-chmod +x scripts/asd-install.sh
-```
+### 🎲 **1 Mini Project**
+- **Dice App** - Create an interactive dice rolling app
 
-```bash copy
-bash scripts/asd-install.sh
-```
+### 📋 **Updated Portfolio**
+Your portfolio page will automatically include links to all your new projects!
 
-<br><br><br>
+---
 
-## Step 5 - Add Projects to Portfolio
+## After Installation
 
-Open your `portfolio.html` file. Below the `<h1>Portfolio</h1>` element, add a `<h2>Fundamentals Projects</h2>` element.
+1. **Check your files**: Look for the new `asd-projects` folder
+2. **View your portfolio**: Open `portfolio.html` with Live Server
+3. **Test the links**: Click on your new "Advanced Projects" section
+4. **Start coding**: Pick any project and dive in!
 
-Below the closing `</ul>` tag inside of the `main` element, add the following html:
+---
 
-```HTML
-<h2>Advanced Projects</h2>
-<ul id ="portfolio">
-    <li><a href="asd-projects/data-shapes"> Data Shapes: Iteration practice with patterns</a></li>
-    <li><a href="asd-projects/debugging-exercise"> Debugging Exercise: A debugging exercise</a></li>
-    <li><a href="asd-projects/snake">Snake: Feed the snake or be fed upon</a></li>
-    <li><a href="asd-projects/walker">Walker: Practice user input by animating walking boxes</a></li>
-    <li><a href="asd-projects/image-filtering">Image Filtering: Filter images using loops</a></li>
-    <li><a href="asd-projects/sorting">Sorting Exercise: An exercise on sorting algorithms</a></li>
-</ul>
-<h2>Mini Projects</h2>
-<ul id ="portfolio">
-    <li><a href="asd-projects/dice-app"> Dice App: A simple, interactive dice app built using jQuery</a></li>
-</ul>
-```
+## Need Help?
 
-Open your home page with Live Server, navigate to your portfolio, and ensure that the new links work before moving on.
+If you run into any issues:
+- Make sure you're in your `username.github.io` codespace
+- Check that you're in the main directory (not inside another folder)
+- Ask your instructor if you get stuck
 
-<br><br><br>
+**Tip**: The command is safe to run multiple times. If something goes wrong, just run it again!
 
-## Step 6 - Push Up Your Code
+---
 
-Run the following commands in your terminal to push up your code to GitHub.
+## Ready to Code?
 
-- `git add .`
-- `git commit -m "add ASD projects"`
-- `git push`
+Once setup is complete, you'll have everything you need to start building advanced projects. Each project folder contains:
+- Complete project files
+- Detailed instructions
+- Starter code to build upon
+
+Choose a project that interests you and start coding! 🚀
