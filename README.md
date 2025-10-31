@@ -35,37 +35,17 @@ All of the above should already have been done if you are in the advanced course
 
 <br><br><br>
 
-## Step 3: Add Script to Install New Projects
-
-**NOTE**: If your repo already contains a `scripts` folder with a `asd-install.sh` file inside of it, skip ahead to [Step 4](#step-4-install-asd-projects-into-codespace)
-
-Copy and paste each of the following commands into your codespace's terminal, pressing enter after pasting each command to run it.
-
-```bash copy
-mkdir scripts
-```
-
-```bash copy
-printf '# this script most recently updated/maintained in august 2025\n# extract username from current working directory (expects format: username.github.io)\ncurrent_dir=$(basename "$PWD")\n# extract username from current working directory (expects format: username.github.io)\nif [[ "$current_dir" =~ ^([^.]+)\.github\.io$ ]]; then\n  username="${BASH_REMATCH[1]}"\n  echo $username\nelse\n  echo "Error: Current directory name must be in the format username.github.io."\n  echo "Please check which directory you are in. Check with your instructor if you need help. Cancelling operation."\n  exit 1\nfi\n\n# check if asd-projects folder already exists\nif [ -d "asd-projects" ]; then\n  echo "Error: asd-projects directory already exists."\n  echo "You may have already run this script. Check with your instructor before proceeding. Cancelling operation."\n  exit 1\nfi\n\n# clone student-owned asd-projects repo\ngit clone https://github.com/$username/asd\n\n# remove git references from cloned repo if the asd folder exists\nif [ -d "asd" ]; then\n  echo "Preparing asd projects and instructions..."\nelse\n  echo "Error: asd folder does not exist."\n  echo "There may be an issue with your repository. Please check with your instructor to help troubleshoot. Cancelling operation."\n  exit 1\nfi\n\ncd asd\nrm -rf .git*\ncd ..\n\n# create subfolders in project-instructions folder\nif [ ! -d "project-instructions/asd" ]; then\n  mv project-instructions fsd\n  mkdir project-instructions\n  mv fsd project-instructions/\n  mv asd/project-instructions project-instructions/asd/\nelse\n  echo "asd subfolder already exists in project-instructions. Existing asd instructions will be replaced."\n  mv asd/project-instructions project-instructions/asd/\nfi\n\n# move asd projects to root\nmv asd/asd-projects asd-projects/\n\n# remove cloned asd repo once all projects are installed\nrm -rf asd\n' > scripts/asd-install.sh
-```
-
-<br><br><br>
-
-## Step 4: Install ASD Projects into Codespace
+## Step 3: Install ASD Projects into Codespace
 
 Copy and paste the following command into your terminal, then press enter.
 
 ```bash copy
-chmod +x scripts/asd-install.sh
-```
-
-```bash copy
-bash scripts/asd-install.sh
+curl -sSL https://raw.githubusercontent.com/OperationSpark/asd-setup/main/asd-install.sh | bash
 ```
 
 <br><br><br>
 
-## Step 5 - Add Projects to Portfolio
+## Step 4 - Add Projects to Portfolio
 
 Open your `portfolio.html` file. Below the `<h1>Portfolio</h1>` element, add a `<h2>Fundamentals Projects</h2>` element.
 
@@ -91,7 +71,7 @@ Open your home page with Live Server, navigate to your portfolio, and ensure tha
 
 <br><br><br>
 
-## Step 6 - Push Up Your Code
+## Step 5 - Push Up Your Code
 
 Run the following commands in your terminal to push up your code to GitHub.
 
