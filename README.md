@@ -47,9 +47,9 @@ curl -sSL https://raw.githubusercontent.com/OperationSpark/asd-setup/main/asd-in
 
 ## Step 4 - Add Projects to Portfolio
 
-Open your `portfolio.html` file. Below the `<h1>Portfolio</h1>` element, add a `<h2>Fundamentals Projects</h2>` element.
+In your Codespace, open your `portfolio.html` file. Below the `<h1>Portfolio</h1>` element, add a `<h2>Fundamentals Projects</h2>` element.
 
-Below the closing `</ul>` tag inside of the `main` element, add the following html:
+Next, find the closing `</ul>` tag just above the closing `</main>` tag. Below the closing '</ul>' tag, add the following html:
 
 ```HTML
 <h2>Advanced Projects</h2>
