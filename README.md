@@ -14,15 +14,12 @@ All of the above should already have been done if you are in the advanced course
 
 <br><br><br>
 
-## Step 1: Create a New Repository
+## Step 1: Complete the ASD Setup TODO on Greenlight
 
-- Right click [this link](https://github.com/new?template_name=asd-projects-template&template_owner=OperationSpark) and select "Open Link in New Tab".
-- Ensure that `"OperationSpark/asd-projects-template"` is the selected template in the "Repository template" dropdown.
-- Click the "Choose an owner" dropdown and select your username
-- Name your new repository `asd` in the "Repository name" input
-  - **Important**: this name should be all lowercase, and without any spaces or symbols
-- Confirm with your teacher that all setup steps are complete before clicking "Create repository" at the bottom of the page
-- The repository will take 10-15 seconds to load (since code is being copied from another spot). After the repsitory is set up, you can close the tab that contains your newly created repository and switch back to your codespace
+Follow through the setup slides with your teacher to complete the following steps on Greenlight:
+
+- Enter a join code for your ASD course (provided by your instructor)
+- Complete the "ASD Setup" TODO on Greenlight. For this todo, you'll click the "Install ASD Projects" button, which will add a new set of projects to your GitHub repository in a new folder named `asd-projects`.
 
 <br><br><br>
 
@@ -35,13 +32,15 @@ All of the above should already have been done if you are in the advanced course
 
 <br><br><br>
 
-## Step 3: Install ASD Projects into Codespace
+## Step 3 - Pull your asd projects from your GitHub repository into your Codespace
 
-Copy and paste the following command into your terminal, then press enter.
+In your Codespace terminal, type the following command, then press enter:
 
 ```bash copy
-curl -sSL https://raw.githubusercontent.com/OperationSpark/asd-setup/main/asd-install.sh | bash
+git pull
 ```
+
+After running this command, confirm that your codespace now has a folder named `asd-projects`. If you do not see the folder, or if you encounter any errors, reach out to your instructor for help.
 
 <br><br><br>
 
